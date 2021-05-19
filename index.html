@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title> KRT - MongoDB </title>
+		<link rel="stylesheet" type="text/css"   href="/css/style.css">
+		<script type="text/javascript">
+			//alert("Database VehiclesDB has been Loaded.");
+		</script>
+	</head>
+	<body>
+		<div id="pageWrap">
+			<header>
+				<h1>Craigslist Vehicle Search</h1>
+			</header>
+			<main>
+				
+				<br>
+				<h2>This webpage is used to search through a database of vehicles posted on craiglist.</h2>
+				<br>
+				<form action="/" method="GET">
+					<fieldset>
+						<legend>Please Enter Query Below: </legend>
+						<input type="text" name="query" id="query">
+						<br>
+						<!--<input type="button" onclick="find()" value="Search">-->
+						<button type="submit">Submit</button>
+						<input type="reset" value="Reset">
+					</fieldset>
+				</form>
+				<form>
+					<fieldset>
+						<! <output type="text" name="results" id="results"        I know this doesn't work >
+					</fieldset>
+				</form>
+			</main>
+			<footer>
+				<script>
+				document.write("This page was last modified: " + document.lastModified);
+				</script>
+			</footer>
+		</div>
+	</body>
+</html>

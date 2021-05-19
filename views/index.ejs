@@ -1,0 +1,130 @@
+<% var Vehicles; %>
+<% var Images; %>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title> KRT - MongoDB </title>
+		<link rel="stylesheet" type="text/css"   href="/css/style.css">
+		 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+			//alert("Database VehiclesDB has been Loaded.");
+		</script>
+		<script type="text/css">
+			
+		</script>
+	</head>
+	<body>
+		<div id="pageWrap">
+			<header>
+				<h1>Craigslist Vehicle Search</h1>
+			</header>
+			<main>
+				
+				<br>
+				<h2>This webpage is used to search through a database of vehicles posted on craiglist.</h2>
+				<br>
+				<div class="container">
+					<div class="row">
+                      <div class="col-md">
+				<form action="/find" method="POST">
+					<fieldset>
+						<legend>Please Enter Query Below: </legend>
+						<input type="text" name="query" id="query" placeholder="brand/model/year" autocomplete="off" required>
+						
+						<!--<input type="button" onclick="find()" value="Search">-->
+						<button type="submit">Submit</button>
+						<button type="reset">Reset</button>
+						
+					</fieldset>
+					</form>
+				</div>
+				<div class="col-md">
+					<form action="/loc" method="POST">
+					<fieldset>
+						<legend>Loc Search: </legend>
+						<input type="text" name="lat" id="lat" placeholder="city" autocomplete="off" required>
+					
+						<input type="text" name="dist" id="dist" placeholder="miles" autocomplete="off" required>
+						
+						<!--<input type="button" onclick="find()" value="Search">-->
+						<button type="submit">Submit</button>
+						<button type="reset">Reset</button>
+						
+					</fieldset>
+				</form>
+				</div>
+			</div>
+                </div>
+				<div class="scrolls">
+						
+  <!-- Loop through quotes -->
+  <% for(var i = 0; i < Vehicles.length; i++) {%>
+  <fieldset>
+  	<nav style="border: thin solid black">
+	<ul class="quotes">
+    <li class="quote">
+
+      <!-- Output name from the iterated quote object -->
+      <img src="data:image/jpeg;base64, <%=Images[i]%>" height="84" width="84" alt="img">
+      Brand : <span><%= Vehicles[i].manufacturer %></span> 
+      <!-- Output quote from the iterated quote object -->
+      Model : <span><%= Vehicles[i].model %></span> 
+      Year : <span><%= Vehicles[i].year %></span> </br>
+      Price : <span>$<%= Vehicles[i].price %></span>
+    </li>
+    </ul>
+    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#<%=Vehicles[i].id%>">See more</button></br>
+</nav>
+    </fieldset>
+    <div id="<%=Vehicles[i].id%>"  class="collapse container" style="border: thin solid black">
+    	<div class="row">
+    		<div class="col-sm-3">
+    			<img src="data:image/jpeg;base64, <%=Images[i]%>" alt="img"> </br>
+    	Region : <span><%= Vehicles[i].region %></span> </br>
+      State : <span><%= Vehicles[i].state %></span> </br>
+       County : <span><%= Vehicles[i].county %></span> </br></br>
+      <!-- Output quote from the iterated quote object -->
+      Type : <span><%= Vehicles[i].type %></span>  </br>
+      Transmission : <span><%= Vehicles[i].transmission %></span> </br>
+      Condition : <span><%= Vehicles[i].condition %></span></br>
+      Cylinders : <span><%= Vehicles[i].cylinders %></span>  </br>
+      Fuel : <span><%= Vehicles[i].fuel %></span> </br>
+      Title Status : <span><%= Vehicles[i].title_status %></span>  </br>
+      Odometer : <span><%= Vehicles[i].odometer %></span> </br>
+      Size : <span><%= Vehicles[i].size %></span>  </br>
+      Color : <span><%= Vehicles[i].paint_color %></span> </br>
+       Color : <span><%= Vehicles[i].image_url %></span> </br>
+      Comment : <span><%= Vehicles[i].comments %></span> </br></br>
+      <form action="/comment" method="POST">
+      <input type="text" name="comment" id="comment" placeholder="enter comment"><br>
+      <input type="text" name="commentid" id="commentid" value="<%=Vehicles[i]._id%>"><br>
+						<!--<input type="button" onclick="find()" value="Search">-->
+	  <button type="submit">Submit</button>
+	  <button type="reset">Reset</button>
+	</form>
+  </div>
+  <div class="col-sm-6">
+    	<fieldset>
+    		ID : <span style="text-align: center;"><%= Vehicles[i].id %></span> </br>
+    Brand : <span style="text-align: center;"><%= Vehicles[i].description %></span> </br>
+      <!-- Output quote from the iterated quote object -->
+      
+      
+      </fieldset>
+  </div>
+  </div>
+    </div>
+  <% } %>
+</div>
+			</main>
+			<!--<footer>
+				<script>
+				document.write("This page was last modified: " + document.lastModified);
+				</script>
+			</footer> -->
+		</div>
+	</body>
+</html>
