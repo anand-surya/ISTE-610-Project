@@ -7,7 +7,7 @@ Used Cars Search Tool using Node.js and MongoDB
 2.	Download mongodb.zip from this Google Drive link: https://drive.google.com/file/d/1pAGM5Flpz2Uaf_VXmiMx2aAxuWvymmEN/view?usp=sharing 
 3.	Extract the contents of mongodb.zip into your preferred MongoDB storage directory.
 4.	Start the MongoDB Server. You may need to run mongod with the directory set to the extracted mongodb directory.
-5.	Extract the contents of trial.zip into a directory easily accessible to the Terminal or Command Line (your home directory should work)
+5.	Save the repo in your computer
 6.	Start the application:
 
 a.	For MacOS/Linux: 
